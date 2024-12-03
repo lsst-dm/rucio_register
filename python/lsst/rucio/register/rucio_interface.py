@@ -27,6 +27,7 @@ import zlib
 
 import lsst.daf.butler
 import rucio.common.exception
+from lsst.rucio.register.data_type import DataType
 from lsst.rucio.register.resource_bundle import ResourceBundle
 from lsst.rucio.register.rubin_meta import RubinMeta
 from lsst.rucio.register.rucio_did import RucioDID
@@ -116,7 +117,7 @@ class RucioInterface:
         logging.debug(f"{name=}")
         logging.debug(f"{path=}")
 
-        meta = RubinMeta(rubin_butler=1, rubin_sidecar=metadata)
+        meta = RubinMeta(rubin_butler=DataType.DATA_PRODUCT, rubin_sidecar=metadata)
         d = RucioDID(
             pfn=pfn,
             bytes=size,

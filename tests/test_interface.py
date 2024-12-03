@@ -30,6 +30,7 @@ from lsst.daf.butler import Butler, DatasetRef, DimensionUniverse
 
 # from lsst.daf.butler.registry import DatasetTypeError, MissingCollectionError
 from lsst.resources import ResourcePath
+from lsst.rucio.register.data_type import DataType
 from lsst.rucio.register.rucio_interface import RucioInterface
 from rucio.client.didclient import DIDClient
 from rucio.client.replicaclient import ReplicaClient
@@ -106,7 +107,7 @@ class InterfaceTestCase(lsst.utils.tests.TestCase):
         self.assertEqual(did["scope"], "test")
 
         meta = did["meta"]
-        self.assertEqual(meta["rubin_butler"], 1)
+        self.assertEqual(meta["rubin_butler"], DataType.DATA_PRODUCT)
 
     def common(self):
 
